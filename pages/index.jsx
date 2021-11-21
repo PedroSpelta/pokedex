@@ -47,9 +47,12 @@ export default function Home() {
         Pokedex
       </div>
 
+      <div className="bg-gray-700">
       <Inputs />
 
       <Pokedex pokemons={pokemonsList}/>
+
+      </div>
     </div>
   );
 }
