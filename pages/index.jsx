@@ -26,10 +26,20 @@ export default function Home() {
         name: fetchPokemonInfoData.name,
         img: fetchPokemonInfoData.sprites.other["official-artwork"].front_default,
         type1: fetchPokemonInfoData.types[0].type.name,
-        type2: type2? type2: 'none'
+        type2: type2? type2.type.name: 'none',
+        hp: fetchPokemonInfoData.stats[0]["base_stat"],
+        atk: fetchPokemonInfoData.stats[1]["base_stat"],
+        def: fetchPokemonInfoData.stats[2]["base_stat"],
+        spatk: fetchPokemonInfoData.stats[3]["base_stat"],
+        spdef: fetchPokemonInfoData.stats[4]["base_stat"],
+        spd: fetchPokemonInfoData.stats[5]["base_stat"],
+        weight: fetchPokemonInfoData.weight,
+        height: fetchPokemonInfoData.height,
       }
       pokemonDataArray.push(pokemonDataObj);
+      
     }
+    console.log(pokemonDataArray);
     return pokemonDataArray;
   };
   useEffect(async () => {

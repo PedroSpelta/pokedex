@@ -10,11 +10,18 @@ function Pokedex({ pokemons }) {
           <Pokemon
             name={pokemon.name}
             img={pokemon.img}
-            hp="100"
+            hp={pokemon.hp}
+            atk={pokemon.atk}
+            def={pokemon.def}
+            spatk={pokemon.spatk}
+            spdef={pokemon.spdef}
+            spd={pokemon.spd}
             number={pokemon.number}
             type1={pokemon.type1}
             type2={pokemon.type2}
             key={pokemon.id}
+            weight={pokemon.weight}
+            height={pokemon.height}
           />
         );
       })}

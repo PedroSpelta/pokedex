@@ -1,12 +1,12 @@
 import React from "react";
 
-function Statusbar({ name, value, color }) {
+function Statusbar({ name, value, backColor, frontColor }) {
   const percentage = Math.round((value / 255) * 100).toString() + "%";
   return (
-    <div className={`w-4/6 bg-${color}-300 relative`}>
+    <div className={`w-5/6`} style={{backgroundColor: backColor, position: "relative"}}>
       <div
-        className={`bg-${color}-600 h-5 flex justify-between items-center`}
-        style={{ width: percentage }}
+        className={`h-5 flex justify-between items-center border-r-[1px] border-opacity-10 border-black`}
+        style={{ width: percentage, backgroundColor: frontColor }}
       >
         <span className="font-semibold">{name}</span>
       </div>
