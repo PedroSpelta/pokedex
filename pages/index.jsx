@@ -26,7 +26,7 @@ export default function Home() {
         name: fetchPokemonInfoData.name,
         img: fetchPokemonInfoData.sprites.other["official-artwork"].front_default,
         type1: fetchPokemonInfoData.types[0].type.name,
-        type2: type2? type2.type.name: 'none',
+        type2: type2? type2.type.name: null,
         hp: fetchPokemonInfoData.stats[0]["base_stat"],
         atk: fetchPokemonInfoData.stats[1]["base_stat"],
         def: fetchPokemonInfoData.stats[2]["base_stat"],

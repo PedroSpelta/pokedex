@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Statusbar from "./Statusbar";
+import Typebar from "./Typebar";
 
 const elementDic = {
   grass: {
@@ -49,7 +50,7 @@ function Pokemon({
 }) {
   const typeColor = elementDic[type1].color;
   const typeImg = elementDic[type1].img;
-  const typeImg2 = type2 !== 'none' ? elementDic[type2].img : false;
+  const typeImg2 = type2 ? elementDic[type2].img : false;
   const [hover, setHover] = useState(false);
   return (
     <div>
@@ -95,6 +96,10 @@ function Pokemon({
               <p className="pr-2">Weight: {weight/10}kg</p>
               <p className="pl-2">Height: {height/10}m</p>
             </div>
+
+            {/* tpye bar */}
+
+            <Typebar type1={type1} type2={type2}/>
 
             {/* status bar */}
             <div className="flex flex-col justify-center items-center scale-75">
