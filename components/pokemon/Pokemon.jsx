@@ -102,7 +102,7 @@ function Pokemon({
             <Typebar type1={type1} type2={type2}/>
 
             {/* status bar */}
-            <div className="flex flex-col justify-center items-center scale-50 mt-[-12px]">
+            <div className="flex flex-col justify-center items-center scale-50 mt-[-12px] border-2 border-black border-opacity-50">
               <Statusbar name="HP" backColor="#FF5959" frontColor="#FF0000" value={hp} />
               <Statusbar name="ATK" backColor="#F5AC78" frontColor="#F08030" value={atk} />
               <Statusbar name="DEF" backColor="#FAE078" frontColor="#F8D030" value={def} />

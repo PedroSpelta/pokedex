@@ -3,7 +3,7 @@ import React from "react";
 function Statusbar({ name, value, backColor, frontColor }) {
   const percentage = Math.round((value / 255) * 100).toString() + "%";
   return (
-    <div className={`w-5/6`} style={{backgroundColor: backColor, position: "relative"}}>
+    <div className={`w-full`} style={{backgroundColor: backColor, position: "relative"}}>
       <div
         className={`h-5 flex justify-between items-center border-r-[1px] border-opacity-10 border-black`}
         style={{ width: percentage, backgroundColor: frontColor }}
