@@ -1,4 +1,5 @@
 import React from "react";
+import Emptycard from "../pokemon/Emptycard";
 import Pokemon from "../pokemon/Pokemon";
 
 function Pokedex({ pokemons }) {
@@ -25,6 +26,23 @@ function Pokedex({ pokemons }) {
           />
         );
       })}
+      <Emptycard />
+      <Emptycard />
+
+      <div className="hidden md:flex">
+      <Emptycard />
+      </div>
+      <div className="hidden md:flex">
+      <Emptycard />
+      </div>
+
+
+      <div className="hidden xl:flex">
+      <Emptycard />
+      </div>
+      <div className="hidden xl:flex">
+      <Emptycard />
+      </div>
     </div>
   );
 }

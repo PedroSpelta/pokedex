@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Listbox } from "@headlessui/react";
+import React, { useState, Fragment } from "react";
+import { Listbox, Transition } from "@headlessui/react";
 
 const types = [
   { id: 1, name: "Grass" },
@@ -16,16 +16,29 @@ function Inputs() {
   const [selected, setSelected] = useState(types[0]);
 
   return (
-    <Listbox value={selected} onChange={setSelected}>
-      <Listbox.Button>{selected.name}</Listbox.Button>
-      <Listbox.Options>
-        {types.map((type) => (
-          <Listbox.Option key={type.id} value={type} disabled={false}>
-            {type.name}
-          </Listbox.Option>
-        ))}
-      </Listbox.Options>
-    </Listbox>
+    <div className="w-24 absolute">
+      <Listbox value={selected} onChange={setSelected}>
+        <div className="relative mt-1">
+          <Listbox.Button className="bg-white w-full rounded-t-lg shadow-md text-left pl-2">
+            {selected.name}
+          </Listbox.Button>
+          <Transition
+            as={Fragment}
+            leave="transition ease-in duration-100"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <Listbox.Options className={`scroll absolute w-full bg-white rounded-b-md max-h-40 overflow-auto`} >
+              {types.map((type) => (
+                <Listbox.Option key={type.id} value={type} disabled={false} className={({active}) => `${active? 'select-none font-bold text-blue-400' : ''} cursor-default py-1 pr-4`}>
+                  {type.name}
+                </Listbox.Option>
+              ))}
+            </Listbox.Options>
+          </Transition>
+        </div>
+      </Listbox>
+    </div>
   );
 }
 
