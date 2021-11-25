@@ -6,6 +6,8 @@ import axios from "axios";
 
 export default function Home() {
   const [pokemonsList, setPokemonsList] = useState([]);
+  const [filteredPokemons, setFilteredPokemons] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const fetchPokemonLinks = async () => {
     const pokemonLinkData = await axios(
@@ -37,14 +39,15 @@ export default function Home() {
         height: fetchPokemonInfoData.height,
       }
       pokemonDataArray.push(pokemonDataObj);
-      
     }
-    console.log(pokemonDataArray);
+    setLoading(false);
     return pokemonDataArray;
   };
   useEffect(async () => {
+    setLoading(true)
     const pokemonData = await fetchPokemon();
     setPokemonsList(pokemonData);
+    setFilteredPokemons(pokemonData);
   }, []);
   return (
     <div className="">
@@ -58,9 +61,9 @@ export default function Home() {
       </div>
 
       <div className="bg-gray-700">
-      <Inputs />
+      <Inputs pokemonList={pokemonsList} setFilteredPokemons={setFilteredPokemons}/>
 
-      <Pokedex pokemons={pokemonsList}/>
+      <Pokedex pokemons={filteredPokemons}/>
 
       </div>
     </div>

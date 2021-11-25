@@ -46,14 +46,15 @@ function Pokemon({
   spd,
   hp,
   height,
-  weight
+  weight,
+  aref
 }) {
   const typeColor = elementDic[type1].color;
   const typeImg = elementDic[type1].img;
   const typeImg2 = type2 ? elementDic[type2].img : false;
   const [hover, setHover] = useState(false);
   return (
-    <div>
+    <div ref={aref}>
       <div
         className=" w-[220px] h-[300px] border-8 border-yellow-300 bg-yellow-300 rounded-lg relative overflow-hidden"
         onMouseEnter={() => setHover(true)}
