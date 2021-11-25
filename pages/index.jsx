@@ -9,15 +9,14 @@ export default function Home() {
   const [filteredPokemons, setFilteredPokemons] = useState([]);
   const [loading, setLoading] = useState(false);
 
-
   const fetchPokemonLinks = async () => {
     const pokemonLinkData = await axios(
-      "https://pokeapi.co/api/v2/pokemon?offset=0&limit=20"
+      `https://pokeapi.co/api/v2/pokemon?offset=${pokemonsList.length}&limit=10`
     );
     return await pokemonLinkData.data.results;
   }
 
-  const fetchPokemon = async () => {
+  const fetchPokemonData = async () => {
     const pokemonLinksArray = await fetchPokemonLinks();
     const pokemonDataArray = [];
     for ( let c=0; c < pokemonLinksArray.length; c += 1) {
@@ -44,11 +43,18 @@ export default function Home() {
     setLoading(false);
     return pokemonDataArray;
   };
-  useEffect(async () => {
+
+  const fetchPokemons = async () => {
     setLoading(true)
-    const pokemonData = await fetchPokemon();
-    setPokemonsList(pokemonData);
-    setFilteredPokemons(pokemonData);
+    const pokemonData = await fetchPokemonData();
+    const newPokemonList = [...pokemonsList, ...pokemonData]
+    console.log(newPokemonList);
+    setPokemonsList(newPokemonList);
+    setFilteredPokemons(newPokemonList);
+  }
+
+  useEffect(async () => {
+    fetchPokemons();
   }, []);
   return (
     <div className="">
@@ -64,7 +70,7 @@ export default function Home() {
       <div className="bg-gray-700">
       <Inputs pokemonList={pokemonsList} setFilteredPokemons={setFilteredPokemons}/>
 
-      <Pokedex pokemons={filteredPokemons} loading={loading}/>
+      <Pokedex pokemons={filteredPokemons} loading={loading} fetchPokemons={fetchPokemons}/>
 
       </div>
     </div>
