@@ -2,16 +2,18 @@ import React, { useCallback, useEffect, useRef } from "react";
 import Emptycard from "../pokemon/Emptycard";
 import Pokemon from "../pokemon/Pokemon";
 
-function Pokedex({ pokemons }) {
+function Pokedex({ pokemons, loading }) {
   console.log(pokemons);
   const observer = useRef();
   const lastPokemonRef = useCallback((node) => {
     if (observer.current) {
-      console.log(node);
       observer.current.disconnect();
     }
     observer.current = new IntersectionObserver((entries) => {
-      console.log(node, entries[0].isIntersecting, observer.current);
+      if(entries[0].isIntersecting && !loading) {
+        console.log(observer.current);
+
+      }
     });
     if (node) observer.current.observe(node);
   });
