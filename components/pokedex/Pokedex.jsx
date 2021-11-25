@@ -11,7 +11,6 @@ function Pokedex({ pokemons, loading, fetchPokemons }) {
     }
     observer.current = new IntersectionObserver((entries) => {
       if(entries[0].isIntersecting && !loading && !stop) {
-        console.log(node, stop);
         fetchPokemons();
         // setStop(true);
       }

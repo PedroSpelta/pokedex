@@ -1,37 +1,7 @@
 import React, { useState } from "react";
 import Statusbar from "./Statusbar";
 import Typebar from "./Typebar";
-
-const elementDic = {
-  grass: {
-    color: "#78C850aa",
-    img: "https://cdn2.bulbagarden.net/upload/thumb/2/2e/Grass-attack.png/20px-Grass-attack.png",
-  },
-  fire: {
-    color: "#E24242aa",
-    img: "https://cdn2.bulbagarden.net/upload/thumb/a/ad/Fire-attack.png/20px-Fire-attack.png",
-  },
-  water: {
-    color: "#5BC7E5aa",
-    img: "https://cdn2.bulbagarden.net/upload/thumb/1/11/Water-attack.png/20px-Water-attack.png",
-  },
-  normal: {
-    color: "#E5D6D0aa",
-    img: "https://cdn2.bulbagarden.net/upload/thumb/1/1d/Colorless-attack.png/20px-Colorless-attack.png",
-  },
-  bug: {
-    color: "#A8B820aa",
-    img: "https://cdn2.bulbagarden.net/upload/thumb/2/2e/Grass-attack.png/20px-Grass-attack.png",
-  },
-  poison: {
-    color: "#A65E9Aaa",
-    img: "https://cdn2.bulbagarden.net/upload/thumb/e/ef/Psychic-attack.png/20px-Psychic-attack.png"
-  },
-  flying: {
-    color: "#E5D6D0aa",
-    img: "https://cdn2.bulbagarden.net/upload/thumb/1/1d/Colorless-attack.png/20px-Colorless-attack.png"
-  },
-};
+import {elementDic} from '../../data/typeData.js'
 
 function Pokemon({
   name,
