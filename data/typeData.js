@@ -1,4 +1,5 @@
 export const elementDic = {
+  all : {},
   grass: {
     color: "#78C850aa",
     img: "https://cdn2.bulbagarden.net/upload/thumb/2/2e/Grass-attack.png/20px-Grass-attack.png",
@@ -44,7 +45,7 @@ export const elementDic = {
     img: "https://cdn2.bulbagarden.net/upload/thumb/1/1d/Colorless-attack.png/20px-Colorless-attack.png",
     typebar: "#9BCC50"
   },
-  psichic: {
+  psychic: {
     color: "#E5D6D0aa",
     img: "https://cdn2.bulbagarden.net/upload/thumb/1/1d/Colorless-attack.png/20px-Colorless-attack.png",
     typebar: "#9BCC50"
@@ -64,15 +65,34 @@ export const elementDic = {
     img: "https://cdn2.bulbagarden.net/upload/thumb/1/1d/Colorless-attack.png/20px-Colorless-attack.png",
     typebar: "#9BCC50"
   },
-  flying: {
-    color: "#E5D6D0aa",
-    img: "https://cdn2.bulbagarden.net/upload/thumb/1/1d/Colorless-attack.png/20px-Colorless-attack.png",
-    typebar: "#9BCC50"
-  },
   normal: {
     color: "#E5D6D0aa",
     img: "https://cdn2.bulbagarden.net/upload/thumb/1/1d/Colorless-attack.png/20px-Colorless-attack.png",
     typebar: "#9BCC50"
   },
-
+  flying: {
+    color: "#E5D6D0aa",
+    img: "https://cdn2.bulbagarden.net/upload/thumb/1/1d/Colorless-attack.png/20px-Colorless-attack.png",
+    typebar: "#9BCC50"
+  },
+  flying: {
+    color: "#E5D6D0aa",
+    img: "https://cdn2.bulbagarden.net/upload/thumb/1/1d/Colorless-attack.png/20px-Colorless-attack.png",
+    typebar: "#9BCC50"
+  },
+  dark: {
+    color: "#E5D6D0aa",
+    img: "https://cdn2.bulbagarden.net/upload/thumb/1/1d/Colorless-attack.png/20px-Colorless-attack.png",
+    typebar: "#9BCC50"
+  },
+  steel: {
+    color: "#E5D6D0aa",
+    img: "https://cdn2.bulbagarden.net/upload/thumb/1/1d/Colorless-attack.png/20px-Colorless-attack.png",
+    typebar: "#9BCC50"
+  },
+  dragon: {
+    color: "#E5D6D0aa",
+    img: "https://cdn2.bulbagarden.net/upload/thumb/1/1d/Colorless-attack.png/20px-Colorless-attack.png",
+    typebar: "#9BCC50"
+  },
 };

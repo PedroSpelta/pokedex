@@ -8,27 +8,29 @@ export default function Home() {
   const [pokemonsList, setPokemonsList] = useState([]);
   const [filteredPokemons, setFilteredPokemons] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [filterType, setFilterType] = useState("all");
 
   const fetchPokemonLinks = async () => {
     const pokemonLinkData = await axios(
-      `https://pokeapi.co/api/v2/pokemon?offset=${pokemonsList.length}&limit=10`
+      `https://pokeapi.co/api/v2/pokemon?offset=${pokemonsList.length}&limit=50`
     );
     return await pokemonLinkData.data.results;
-  }
+  };
 
   const fetchPokemonData = async () => {
     const pokemonLinksArray = await fetchPokemonLinks();
     const pokemonDataArray = [];
-    for ( let c=0; c < pokemonLinksArray.length; c += 1) {
+    for (let c = 0; c < pokemonLinksArray.length; c += 1) {
       const fetchPokemonInfo = await axios(pokemonLinksArray[c].url);
-      const fetchPokemonInfoData = await fetchPokemonInfo.data
+      const fetchPokemonInfoData = await fetchPokemonInfo.data;
       const type2 = fetchPokemonInfoData.types[1];
-      const pokemonDataObj =  {
+      const pokemonDataObj = {
         number: fetchPokemonInfoData.id,
         name: fetchPokemonInfoData.name,
-        img: fetchPokemonInfoData.sprites.other["official-artwork"].front_default,
+        img: fetchPokemonInfoData.sprites.other["official-artwork"]
+          .front_default,
         type1: fetchPokemonInfoData.types[0].type.name,
-        type2: type2? type2.type.name: null,
+        type2: type2 ? type2.type.name : null,
         hp: fetchPokemonInfoData.stats[0]["base_stat"],
         atk: fetchPokemonInfoData.stats[1]["base_stat"],
         def: fetchPokemonInfoData.stats[2]["base_stat"],
@@ -37,7 +39,7 @@ export default function Home() {
         spd: fetchPokemonInfoData.stats[5]["base_stat"],
         weight: fetchPokemonInfoData.weight,
         height: fetchPokemonInfoData.height,
-      }
+      };
       pokemonDataArray.push(pokemonDataObj);
     }
     setLoading(false);
@@ -45,13 +47,13 @@ export default function Home() {
   };
 
   const fetchPokemons = async () => {
-    setLoading(true)
+    setLoading(true);
     const pokemonData = await fetchPokemonData();
-    const newPokemonList = [...pokemonsList, ...pokemonData]
+    const newPokemonList = [...pokemonsList, ...pokemonData];
     console.log(newPokemonList);
     setPokemonsList(newPokemonList);
     setFilteredPokemons(newPokemonList);
-  }
+  };
 
   useEffect(async () => {
     fetchPokemons();
@@ -68,10 +70,19 @@ export default function Home() {
       </div>
 
       <div className="bg-gray-700">
-      <Inputs pokemonList={pokemonsList} setFilteredPokemons={setFilteredPokemons}/>
+        <Inputs
+          pokemonList={pokemonsList}
+          setFilteredPokemons={setFilteredPokemons}
+          filterType={filterType}
+          setFilterType={setFilterType}
+        />
 
-      <Pokedex pokemons={filteredPokemons} loading={loading} fetchPokemons={fetchPokemons}/>
-
+        <Pokedex
+          pokemons={filteredPokemons}
+          loading={loading}
+          filterType={filterType}
+          fetchPokemons={fetchPokemons}
+        />
       </div>
     </div>
   );

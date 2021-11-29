@@ -1,20 +1,18 @@
 import React, { useState, Fragment } from "react";
 import Select from "./Select";
 
-function Inputs({ pokemonList, setFilteredPokemons }) {
-  const [selected, setSelected] = useState({ id: 1, name: "Grass" });
-  const filterByElement = () => {
-    const element = selected.name.toLowerCase();
-    const filtered = pokemonList.filter((pokemon) => {
-      return pokemon.type1 === element || pokemon.type2 === element;
-    });
-    setFilteredPokemons(filtered);
-  };
+function Inputs({
+  pokemonList,
+  setFilteredPokemons,
+  filterType,
+  setFilterType,
+}) {
   return (
     // <form>
-    <div className="flex">
-      <Select selected={selected} setSelected={setSelected} />
-      <button className="bg-white" onClick={filterByElement}>Search</button>
+    <div className="flex justify-center relative z-10 mb-20">
+      <div className="flex">
+        <Select selected={filterType} setSelected={setFilterType} />
+      </div>
     </div>
     // </form>
   );
